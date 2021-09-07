@@ -1,0 +1,30 @@
+//HourGlass max finder question using 2D ArrayList
+
+int sum = 0;
+    int largestSum = Integer.MIN_VALUE; // holding the minimum value an int can have
+    List<Integer> toprow; 
+    List<Integer> middlerow; 
+    List<Integer> bottomrow;
+    int topsum, middlesum, bottomsum;
+    
+    for(int row=0; row<arr.size()-2; row++) {
+        for(int col=0; col<arr.size()-2; col++) {
+            //Assign Rows
+            toprow = arr.get(row);
+            middlerow = arr.get(row+1);
+            bottomrow = arr.get(row+2);
+            
+            // Get Sum of Each Row
+            topsum = toprow.get(col) + toprow.get(col+1) + toprow.get(col+2);
+            middlesum = middlerow.get(col+1);
+            bottomsum = bottomrow.get(col) + bottomrow.get(col+1) + bottomrow.get(col+2);
+            
+            // Get total sum of hourgalss
+            sum = topsum+middlesum+bottomsum;
+            
+            // If the sum >= largestSum found so far, make it the new largestSum
+            if(sum>= largestSum)
+                largestSum = sum;
+        }
+    }
+    return largestSum;
